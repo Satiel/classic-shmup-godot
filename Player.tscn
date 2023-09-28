@@ -84,7 +84,7 @@ position = Vector2(0, 15)
 sprite_frames = SubResource("SpriteFrames_8en3g")
 animation = &"Forward"
 autoplay = "Forward"
-frame_progress = 0.569307
+frame_progress = 0.747832
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_jpo6d")
