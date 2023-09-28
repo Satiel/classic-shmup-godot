@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://csmyvpv7btw2x"]
+[gd_scene load_steps=7 format=3 uid="uid://csmyvpv7btw2x"]
 
 [ext_resource type="PackedScene" uid="uid://cl3ic6bdb83sq" path="res://Player.tscn" id="1_33m4h"]
+[ext_resource type="Script" path="res://Main.gd" id="1_l0d5v"]
 [ext_resource type="Texture2D" uid="uid://d0wib5nh8w7oj" path="res://Mini Pixel Pack 3/Space_BG (2 frames) (64 x 64).png" id="2_icsa1"]
 
 [sub_resource type="Animation" id="Animation_46hcn"]
@@ -42,6 +43,7 @@ _data = {
 }
 
 [node name="Main" type="Node2D"]
+script = ExtResource("1_l0d5v")
 
 [node name="Background" type="Sprite2D" parent="."]
 texture_repeat = 2
@@ -51,6 +53,7 @@ region_enabled = true
 region_rect = Rect2(0, 0, 240, 320)
 
 [node name="Player" parent="." instance=ExtResource("1_33m4h")]
+position = Vector2(-7, -7)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "scroll"

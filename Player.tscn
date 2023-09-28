@@ -82,9 +82,9 @@ frame = 1
 [node name="Boosters" type="AnimatedSprite2D" parent="Ship"]
 position = Vector2(0, 15)
 sprite_frames = SubResource("SpriteFrames_8en3g")
-animation = &"Left"
+animation = &"Forward"
 autoplay = "Forward"
-frame_progress = 0.828158
+frame_progress = 0.569307
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_jpo6d")
