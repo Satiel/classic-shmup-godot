@@ -58,3 +58,4 @@ func explode():
 	died.emit(5)
 	await $AnimationPlayer.animation_finished
 	queue_free()
+

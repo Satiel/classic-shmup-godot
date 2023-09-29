@@ -8,6 +8,7 @@ func _ready():
 	
 func _on_enemy_died(value):
 	score += value	
+	$CanvasLayer/UI.update_score(score)
 
 func spawn_enemies():
 	for x in range(9):

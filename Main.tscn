@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://csmyvpv7btw2x"]
+[gd_scene load_steps=8 format=3 uid="uid://csmyvpv7btw2x"]
 
 [ext_resource type="PackedScene" uid="uid://cl3ic6bdb83sq" path="res://Player.tscn" id="1_33m4h"]
 [ext_resource type="Script" path="res://Main.gd" id="1_l0d5v"]
 [ext_resource type="Texture2D" uid="uid://d0wib5nh8w7oj" path="res://Mini Pixel Pack 3/Space_BG (2 frames) (64 x 64).png" id="2_icsa1"]
+[ext_resource type="PackedScene" uid="uid://c34eg2cljint5" path="res://UI.tscn" id="4_k4hb4"]
 
 [sub_resource type="Animation" id="Animation_46hcn"]
 resource_name = "scroll"
@@ -60,3 +61,11 @@ autoplay = "scroll"
 libraries = {
 "": SubResource("AnimationLibrary_bp8pp")
 }
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="UI" parent="CanvasLayer" instance=ExtResource("4_k4hb4")]
+
+[connection signal="area_entered" from="Player" to="." method="_on_player_area_entered"]
+[connection signal="area_entered" from="Player" to="Player" method="_on_area_entered"]
+[connection signal="shield_changed" from="Player" to="CanvasLayer/UI" method="update_shield"]

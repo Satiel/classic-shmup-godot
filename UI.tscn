@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://c34eg2cljint5"]
+
+[ext_resource type="Script" path="res://UI.gd" id="1_ejy68"]
+[ext_resource type="Texture2D" uid="uid://bv20elcddkrpv" path="res://Mini Pixel Pack 3/UI objects/bar_background.png" id="1_m32ub"]
+[ext_resource type="Texture2D" uid="uid://cyx5v3pjb0e" path="res://Mini Pixel Pack 3/UI objects/bar_foreground.png" id="2_hppi3"]
+[ext_resource type="PackedScene" uid="uid://cx7vwsrvn8tc6" path="res://ScoreCounter.tscn" id="3_7jm23"]
+
+[node name="MarginContainer" type="MarginContainer"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 20.0
+grow_horizontal = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+script = ExtResource("1_ejy68")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="ShieldBar" type="TextureProgressBar" parent="HBoxContainer"]
+custom_minimum_size = Vector2(80, 16)
+layout_mode = 2
+value = 47.0
+nine_patch_stretch = true
+stretch_margin_left = 3
+stretch_margin_top = 3
+stretch_margin_right = 3
+stretch_margin_bottom = 3
+texture_under = ExtResource("1_m32ub")
+texture_progress = ExtResource("2_hppi3")
+
+[node name="ScoreCounter" parent="HBoxContainer" instance=ExtResource("3_7jm23")]
+layout_mode = 2
