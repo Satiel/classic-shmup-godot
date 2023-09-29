@@ -15,7 +15,7 @@ func _process (delta):
 func _on_area_entered(area):
 	if area.name == "Player":
 		queue_free()
-		area.shield -= 1
+		area.shield -= 10
 	
 
 

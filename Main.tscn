@@ -1,9 +1,26 @@
-[gd_scene load_steps=8 format=3 uid="uid://csmyvpv7btw2x"]
+[gd_scene load_steps=10 format=3 uid="uid://csmyvpv7btw2x"]
 
 [ext_resource type="PackedScene" uid="uid://cl3ic6bdb83sq" path="res://Player.tscn" id="1_33m4h"]
 [ext_resource type="Script" path="res://Main.gd" id="1_l0d5v"]
 [ext_resource type="Texture2D" uid="uid://d0wib5nh8w7oj" path="res://Mini Pixel Pack 3/Space_BG (2 frames) (64 x 64).png" id="2_icsa1"]
 [ext_resource type="PackedScene" uid="uid://c34eg2cljint5" path="res://UI.tscn" id="4_k4hb4"]
+[ext_resource type="Texture2D" uid="uid://b6iep5w5n0862" path="res://Mini Pixel Pack 3/UI objects/START (48 x 8).png" id="5_064of"]
+[ext_resource type="Texture2D" uid="uid://cmys5ej5r1ubp" path="res://Mini Pixel Pack 3/UI objects/GAME_OVER (72 x 8).png" id="6_bcfx7"]
+
+[sub_resource type="Animation" id="Animation_b44ol"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Background:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(0, 0, 240, 320)]
+}
 
 [sub_resource type="Animation" id="Animation_46hcn"]
 resource_name = "scroll"
@@ -20,21 +37,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Rect2(0, 0, 240, 320), Rect2(0, 64, 240, 320)]
-}
-
-[sub_resource type="Animation" id="Animation_b44ol"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Background:region_rect")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Rect2(0, 0, 240, 320)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bp8pp"]
@@ -65,7 +67,25 @@ libraries = {
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="UI" parent="CanvasLayer" instance=ExtResource("4_k4hb4")]
+offset_bottom = 36.0
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Start" type="TextureButton" parent="CanvasLayer/CenterContainer"]
+layout_mode = 2
+texture_normal = ExtResource("5_064of")
+
+[node name="GameOver" type="TextureRect" parent="CanvasLayer/CenterContainer"]
+layout_mode = 2
+texture = ExtResource("6_bcfx7")
 
 [connection signal="area_entered" from="Player" to="." method="_on_player_area_entered"]
 [connection signal="area_entered" from="Player" to="Player" method="_on_area_entered"]
+[connection signal="died" from="Player" to="." method="_on_player_died"]
 [connection signal="shield_changed" from="Player" to="CanvasLayer/UI" method="update_shield"]
+[connection signal="pressed" from="CanvasLayer/CenterContainer/Start" to="." method="_on_start_pressed"]

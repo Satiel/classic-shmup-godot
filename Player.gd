@@ -9,7 +9,7 @@ var can_shoot = true
 signal died
 signal shield_changed
 
-@export var max_shield = 10
+@export var max_shield = 100
 var shield = max_shield: 
 	set = set_shield
 	
